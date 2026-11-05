@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Curs 05 — ElMed Prep</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<div class="wrap content">
+  <header class="site">
+    <a class="brand" href="index.html">ElMed Prep</a>
+    <nav>
+      <a href="index.html">Study</a>
+      <a href="exam.html">Mock exam</a>
+    </nav>
+  </header>
+
+  <h1>Curs 05 — Signal conditioning, ADC &amp; DAC</h1>
+  <p class="lead">Conspect: introducere în condiționarea semnalului · ADC · DAC · tehnici de procesare · studii de caz.</p>
+
+  <h2>Introduction to signal conditioning</h2>
+  <ul>
+    <li>Signal characteristics: <strong>amplitude, frequency, period, phase, noise and interference (artifacts), polarity</strong>.</li>
+    <li>Sensor/transducer types: biosensors (medical sensors) — temperature, glucose, motion, pressure, pH, gas sensors, etc.</li>
+    <li>The signal conditioning process: <strong>amplification</strong> of the signal, <strong>filtering</strong> of the signal, <strong>analog-to-digital conversion (ADC)</strong>, <strong>digital-to-analog conversion (DAC)</strong>.</li>
+    <li>Signal processing: <strong>isolation and securing</strong> of the signal, <strong>transmission</strong> of the signal, <strong>monitoring and diagnosis</strong>.</li>
+  </ul>
+
+  <h2>Analog-to-digital conversion (ADC)</h2>
+  <ul>
+    <li>Role: allows transforming analog data into a digital format for later processing. Many physical quantities we measure are analog; ADCs act as intermediaries, taking these analog values and transforming them into a digital format that computers and digital systems work with efficiently.</li>
+    <li><strong>Precision and accuracy</strong>: the quality of ADCs used in medical devices can directly affect the precision of medical diagnoses and patient safety — incorrectly digitized data can lead to erroneous conclusions with potentially serious consequences.</li>
+    <li><strong>Sampling rate</strong>: dictates how many samples per second are taken from the analog signal; a higher sampling rate offers a more precise representation of the analog signal, especially for fast-changing signals.</li>
+    <li><strong>Resolution</strong>: the level of detail in the digital representation — the number of bits used to represent an analog signal (8-bit, 12-bit, 16-bit). Higher resolution = smaller variations can be detected and represented.</li>
+    <li>Once digitized, data can be easily stored, analyzed and transmitted — essential for long-term patient monitoring, sharing with healthcare professionals, or the electronic health record.</li>
+  </ul>
+
+  <h2>ADC types</h2>
+  <ul>
+    <li><strong>Parallel (flash)</strong>: among the fastest and most precise; take all bits of the analog signal simultaneously and convert them in parallel, giving high sampling rates. Used in real-time processing applications such as communication or laboratory equipment.</li>
+    <li><strong>Successive approximation (serial)</strong>: convert one bit at a time, going through all bits successively; slower than parallel but can offer high precision; useful in high-resolution data measurement and control systems.</li>
+    <li><strong>Dual-slope</strong>: known for precision and handling high-noise signals; perform two successive approximations, one fast and one fine; used in medical applications such as medical imaging.</li>
+    <li><strong>Integrating</strong>: compare the analog signal with a ramp; the time needed for the ramp to reach the signal value determines the value; used in oscilloscopes and test equipment.</li>
+    <li><strong>Interleaved</strong>: combine several ADC channels to increase the sampling rate; useful when several signals must be acquired at the same time, as in medical data acquisition systems.</li>
+    <li>Choosing the right ADC type is essential for adequate performance and precision in signal conditioning.</li>
+  </ul>
+
+  <h2>ADC parameters</h2>
+  <ul>
+    <li><strong>Resolution</strong>: number of bits (8, 12, 16); higher resolution records smaller variations.</li>
+    <li><strong>Sampling rate</strong>: samples/s; essential in capturing fast-changing signals.</li>
+    <li><strong>Precision</strong>: ability to make exact and consistent measurements; can be influenced by systemic errors such as offset, which must be minimized.</li>
+    <li><strong>ENOB</strong> (effective number of bits): quantization errors and intrinsic ADC noise affect precision; a 12-bit ADC in a system may effectively have only <strong>9.5 bits</strong>.</li>
+    <li><strong>Dynamic range</strong>: the interval of values the ADC can measure between its minimum and maximum.</li>
+    <li><strong>Latency</strong>: time between taking an analog sample and the digital result being available; small latency is crucial in real-time applications.</li>
+    <li><strong>Power consumption</strong>: important in mobile/battery devices — low-power ADCs preferred.</li>
+    <li><strong>Noise</strong>: unwanted variations in the digital signal due to interference or quantization errors.</li>
+    <li><strong>Channel cross-talk</strong>: interference between multiple ADC channels, which can contaminate data.</li>
+    <li><strong>Linearity</strong>: how well the ADC represents a proportional increase of the analog signal; crucial to avoid data distortion.</li>
+  </ul>
+
+  <h2>Practical considerations for choosing an ADC</h2>
+  <ul>
+    <li>High-resolution ADCs for applications where precise measurements are crucial — ECG, medical imaging; lower resolution may suffice for less critical applications.</li>
+    <li>Applications monitoring fast-changing physiological parameters (e.g. blood pressure) may need high sampling rates.</li>
+    <li>Ensure the ADC can handle the input voltage range; in some medical applications input signals vary widely.</li>
+    <li>Low noise levels are essential in medical equipment where precision is crucial.</li>
+    <li>Compatibility with the microcontroller/processor and data formats must be considered.</li>
+    <li>Battery-powered devices: choose ADCs with minimal power requirements.</li>
+  </ul>
+
+  <h2>Real-world case studies</h2>
+  <ul>
+    <li><strong>ECG monitoring device</strong>: a <strong>16-bit ADC with a sampling rate of at least 500 Hz</strong> is chosen to ensure precise capture of ECG waveforms; low noise performance helps distinguish subtle variations, suitable for diagnostic purposes.</li>
+    <li><strong>Pulse oximeter</strong>: measures oxygen saturation and pulse rate; speed and low power are key — a <strong>12-bit ADC with a high sampling rate (1000 Hz)</strong> captures fast pulse changes; design focuses on low power consumption for extended portable battery life.</li>
+  </ul>
+
+  <h2>Digital-to-analog conversion (DAC)</h2>
+  <ul>
+    <li>Role: transform digital signals back into analog form — important wherever precise control or generation of analog signals is needed in medical devices.</li>
+    <li><strong>Controlling signal outputs</strong>: e.g. in an infusion pump, a DAC precisely controls the drug flow rate — the digital control signals are converted into corresponding analog voltages that regulate the pump motor speed.</li>
+    <li><strong>Waveform generation</strong>: in ECG devices, DACs produce the analog signals that create the ECG waveform; in ultrasound and MRI scanners, DACs generate the waveforms (frequency and amplitude) that drive the transducers / gradient coils.</li>
+    <li><strong>Audio and speech processing</strong>: in hearing aids, DACs convert digital audio signals into analog sound waves delivered to the user's ear.</li>
+    <li><strong>Closed-loop control</strong>: in automated anesthesia systems and insulin pumps, DACs contribute to closed-loop control, adjusting the drug administration rate based on real-time data (e.g. a continuous glucose monitor feeds glucose values to a DAC that adjusts the insulin rate to keep glycemia in a target range).</li>
+    <li><strong>Calibration and testing</strong>: DACs generate known analog signals for testing and calibrating sensors and measurement equipment.</li>
+    <li><strong>Modern cardiac pacemakers</strong> use DACs to generate precise stimulation impulses — the digital control input determines the rate and intensity of the impulses.</li>
+  </ul>
+
+  <h2>DAC basics, types and parameters</h2>
+  <ul>
+    <li>A DAC converts discrete digital values into a <strong>continuous, smooth analog signal</strong> (voltage or current).</li>
+    <li><strong>Resolution</strong>: number of discrete steps in its output range, expressed in bits (8, 12, 16) — more steps = more precise analog signal.</li>
+    <li><strong>Output range</strong>: interval of voltages or currents it can generate (min to max) — important for compatibility with the connected circuit.</li>
+    <li>Types: <strong>binary weighted</strong>, <strong>R-2R ladder</strong>, <strong>voltage-output</strong>, <strong>current-output</strong>, <strong>mixed-output</strong>, <strong>voltage-scaling</strong> (output directly proportional to the digital input regardless of load), <strong>current-scaling</strong> (current directly proportional to the digital input, independent of output voltage).</li>
+    <li>Most DACs receive digital data through a digital interface such as <strong>SPI or I2C</strong>, allowing precise control.</li>
+    <li><strong>Precision and errors</strong>: errors such as offset and scale (gain) offset can affect precision and must be considered.</li>
+  </ul>
+
+  <footer class="site"><a href="index.html">← All courses</a> · <a href="exam.html">Mock exam →</a></footer>
+</div>
+</body>
+</html>
