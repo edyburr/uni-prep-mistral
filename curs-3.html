@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Curs 03 — ElMed Prep</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<div class="wrap content">
+  <header class="site">
+    <a class="brand" href="index.html">ElMed Prep</a>
+    <nav>
+      <a href="index.html">Study</a>
+      <a href="exam.html">Mock exam</a>
+    </nav>
+  </header>
+
+  <h1>Curs 03 — Active filters: LP, HP, BP</h1>
+  <p class="lead">Conspect: filtru activ trece jos · filtru activ trece sus · filtru activ trece bandă · frecvența de rezonanță · factorul Q.</p>
+
+  <h2>Filters — generalities</h2>
+  <ul>
+    <li>Filters are networks that process signals in a <strong>frequency-dependent manner</strong>. The basic concept can be explained by the frequency-dependent nature of the impedance of capacitors and inductors.</li>
+    <li>Filters separate signals, passing those of interest and attenuating unwanted frequencies (e.g. a radio receiver passes the desired signal with gain while attenuating the rest).</li>
+    <li>In low-frequency applications (<strong>up to 100 kHz</strong>), passive filters are generally built with simple <strong>RC</strong> networks; at higher frequencies (<strong>above 100 kHz</strong>) they are usually made of <strong>RLC</strong> components.</li>
+    <li>Two distinct types: <strong>active and passive</strong> filters. Active filters contain amplifying devices to increase signal power. In a passive filter, the output amplitude is smaller than the input — passive RC filters attenuate the signal and have a gain smaller than one.</li>
+  </ul>
+
+  <h2>Active low-pass filter</h2>
+  <ul>
+    <li>The capacitor is moved from the op-amp input to the <strong>feedback circuit, in parallel with R2</strong>. The parallel C || R2 combination sets the <strong>-3 dB point</strong> as before, but allows the amplifier gain to decrease beyond the cutoff frequency.</li>
+    <li>At low frequencies, the capacitor reactance is much larger than R2, so the <strong>DC gain is set by the standard inverting formula −R2/R1</strong> (e.g. = 10).</li>
+    <li>As frequency rises, capacitor reactance drops, reducing the impedance of the Xc || R2 combination, until Xc goes to zero. At a sufficiently high frequency the <strong>gain reaches unity (0 dB)</strong> — the amplifier effectively becomes a <strong>follower</strong>: gain equation becomes <strong>1 + 0/R1 = 1</strong>.</li>
+    <li><strong>Second-order</strong> active low-pass: add an extra RC network at the input. The frequency response is identical to first-order except the <strong>stopband slope is twice</strong> that of first-order filters. Design steps are the same.</li>
+  </ul>
+
+  <h2>Active high-pass filter</h2>
+  <ul>
+    <li><strong>Technically, there is no real active high-pass filter</strong> — unlike passive high-pass filters which have an "infinite" maximum passband response, the maximum passband frequency response of an active high-pass is <strong>limited by the characteristics of the op-amp</strong> used.</li>
+    <li>A first-order active high-pass <strong>attenuates low frequencies and passes high-frequency signals</strong>. It consists purely of a <strong>passive filter section followed by a non-inverting op-amp</strong>. The frequency response is the same as the passive filter, except the amplitude is increased by the amplifier gain.</li>
+    <li><strong>Higher-order</strong> active filters (3rd, 4th, 5th…) are formed by <strong>cascading first and second order filters</strong>: a 3rd-order high-pass is a cascade of a 1st and a 2nd order; a 4th-order is two 2nd-order stages. An <strong>odd order starts with a first-order</strong> filter at the input; an even order consists only of second-order filters.</li>
+    <li>There is no limit to the order, but as order grows, so does size — and <strong>precision decreases</strong>: the difference between the real and theoretical stopband response also grows.</li>
+    <li>If all frequency-determining resistors are equal (R1 = R2 = R3…) and all capacitors equal (C1 = C2 = C3…), the <strong>cutoff frequency for any filter order will be exactly the same</strong>.</li>
+  </ul>
+
+  <h2>Active band-pass filter</h2>
+  <ul>
+    <li>The cutoff frequency of the <strong>low-pass part must be greater than</strong> the cutoff of the high-pass part. The difference between the two −3 dB frequencies determines the <strong>bandwidth</strong> of the band-pass filter, while attenuating any signal outside these points.</li>
+    <li>Example: −3 dB points at <strong>200 Hz and 600 Hz</strong> → <strong>BW = 600 − 200 = 400 Hz</strong>.</li>
+    <li>Simple implementation: cascade <strong>passive high-pass + passive low-pass</strong> stages into an amplifying circuit — produces a low-Q (wide passband) response. The <strong>first stage is the high-pass</strong>, which uses the capacitor to <strong>block any DC bias</strong> from the source. A reasonable separation between the two cutoff points is required to prevent interaction between stages; the amplifier also isolates the two stages and defines the overall voltage gain.</li>
+    <li>Improved design: <strong>IGMF</strong> (infinite gain multiple feedback) band-pass — based on an active filter with negative feedback, giving a <strong>high Q factor (up to 25)</strong> and an abrupt decline on each side of its center frequency. Center frequency and bandwidth are linked to R1, R2, C1, C2; output taken from the op-amp output.</li>
+  </ul>
+
+  <footer class="site"><a href="index.html">← All courses</a> · <a href="exam.html">Mock exam →</a></footer>
+</div>
+</body>
+</html>
