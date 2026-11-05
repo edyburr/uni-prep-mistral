@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Curs 02 — ElMed Prep</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<div class="wrap content">
+  <header class="site">
+    <a class="brand" href="index.html">ElMed Prep</a>
+    <nav>
+      <a href="index.html">Study</a>
+      <a href="exam.html">Mock exam</a>
+    </nav>
+  </header>
+
+  <h1>Curs 02 — Analog signal processing &amp; amplifiers</h1>
+  <p class="lead">Conspect: cum se procesează semnalele · cum se amplifică semnalele · alte tipuri de procesări.</p>
+
+  <h2>Analog vs digital signal processing</h2>
+  <ul>
+    <li><strong>Digital</strong> signals are processed more easily than analog ones, because operations are performed on values discrete, <strong>sampled in time and quantized in amplitude</strong>. Operations like logical addition or multiplexing are implemented more simply on digitized versions. Digital signals do not suffer noise degradation as long as the noise does not exceed certain limits.</li>
+    <li><strong>Analog</strong> signals have continuous amplitude-time values, and processing requires that the signal waveforms not be significantly distorted. Noise cannot be eliminated in analog processing, so its interference must be limited by careful design choices. Analog circuit design is much more critical, and analog circuits cannot always be replaced by digital processing.</li>
+  </ul>
+
+  <h2>Electronic circuits used in biomedical signal processing</h2>
+  <ul>
+    <li>Summing circuits, differential circuits, signal switching circuits, amplifier circuits, <strong>instrumentation amplifiers</strong>, <strong>isolation amplifiers</strong>, peak detectors, etc.</li>
+  </ul>
+
+  <h2>Operational amplifier — summing amplifier</h2>
+  <ul>
+    <li>Compared to the voltage follower, adding several input resistors at the input, each equal to the initial input resistance Rin, gives an <strong>inverting summing amplifier</strong> — a "voltage summer" circuit.</li>
+  </ul>
+
+  <h2>Analog signal switching</h2>
+  <ul>
+    <li>Most medical instruments include analog sensors for biometric functions (blood pressure, body temperature, heart rate). Analog signal switching is useful when many sources must be dynamically selected or recombined, using analog switches.</li>
+    <li>Ideal switch: output = input always when ON; resistance between input and output should be infinite when OFF.</li>
+  </ul>
+
+  <h2>Differential amplifier</h2>
+  <ul>
+    <li>A <strong>voltage subtractor</strong> circuit producing an output voltage proportional to the <strong>difference</strong> of two input voltages applied to the inverting and non-inverting terminals of an op-amp.</li>
+    <li>A standard op-amp has two inputs; signals can be connected to both at the same time. Unlike the summing amplifier which adds the input voltages, the differential amplifier <strong>subtracts</strong> them.</li>
+  </ul>
+
+  <h2>Instrumentation amplifier</h2>
+  <ul>
+    <li>Differential amplifiers with <strong>very high gain</strong>, <strong>high input impedance</strong> and a <strong>single-ended output</strong>.</li>
+    <li>Used mainly to amplify <strong>very small differential signals</strong> (from voltage stamps) to biosignals.</li>
+    <li>Unlike standard op-amps where closed-loop gain is set by an external resistive feedback, instrumentation amplifiers have an <strong>internal feedback resistor effectively isolated</strong> from their input terminals, because the input signal is applied to two differential inputs V1 and V2.</li>
+    <li>They have a very good <strong>CMRR</strong> (Common-Mode Rejection Ratio) — zero output when V1 = V2.</li>
+    <li><strong>CMRR</strong> quantifies the ability of a device to reject common-mode signals — those appearing <strong>simultaneously and in phase on both inputs</strong>. A high CMRR is needed when a differential signal must be amplified in the presence of strong common-mode input, such as powerful EMI.</li>
+    <li>Structure: two non-inverting amplifiers A1 and A2 form a differential input stage acting as buffers with gain <strong>1 + 2R2/R1</strong> for differential input signals and <strong>unity gain for common-mode</strong> signals. The differential gain can be varied by simply changing R1. With a common-mode voltage, no current flows through R1, so A1 and A2 act as buffers. The output of differential amplifier A3 is the difference of its two inputs <strong>(V2 − V1)</strong>, amplified by A3's gain (unity if R3 = R4). Example chip: <strong>INA121</strong>.</li>
+  </ul>
+
+  <h2>Isolation amplifier</h2>
+  <ul>
+    <li>Instruments applied in the presence of a common-mode voltage <strong>without an isolation barrier</strong> allow ground currents to flow — in the best case a noisy measured signal, in the worst case destruction of the instrument.</li>
+    <li>Isolation amplifiers are used in medical instruments to <strong>isolate the patient from the leakage current of the power supply</strong>.</li>
+    <li>Isolation modalities:
+      <ul>
+        <li><strong>Inductive coupling</strong> — uses transformers.</li>
+        <li><strong>Optic coupling</strong> — optical or infrared domain, with an LED emitter and a photodiode or phototransistor receiver.</li>
+        <li><strong>Capacitive coupling</strong> — preamplified signal transformed into two complementary medium-frequency (MF) signals, transferred through two capacitors acting as an isolation barrier, then demodulated using a PLL loop.</li>
+        <li><strong>Radio telemetry</strong> — WiFi, Bluetooth, etc.</li>
+      </ul>
+    </li>
+  </ul>
+
+  <h2>Passive vs active filters</h2>
+  <ul>
+    <li><strong>Passive</strong> first-order filtering circuits (low-pass, high-pass) can be built using only a single resistor in series with a non-polarized capacitor.</li>
+    <li>Main disadvantage: output amplitude is <strong>smaller than input</strong> — gain is never greater than unity — and the load impedance affects the filter characteristics. In multi-stage passive filters, this signal loss (<strong>attenuation</strong>) can become very severe.</li>
+    <li><strong>Active filters</strong> contain active components (op-amps) plus resistors and capacitors, draw power from an external supply and use it to <strong>increase/amplify the output signal</strong> — performance similar to a low-frequency filter.</li>
+  </ul>
+
+  <footer class="site"><a href="index.html">← All courses</a> · <a href="exam.html">Mock exam →</a></footer>
+</div>
+</body>
+</html>
