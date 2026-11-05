@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ro">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -11,74 +11,74 @@
   <header class="site">
     <a class="brand" href="index.html">ElMed Prep</a>
     <nav>
-      <a href="index.html">Study</a>
-      <a href="exam.html">Mock exam</a>
+      <a href="index.html">Studiu</a>
+      <a href="exam.html">Examen simulat</a>
     </nav>
   </header>
 
-  <h1>Curs 02 — Analog signal processing &amp; amplifiers</h1>
+  <h1>Curs 02 — Procesarea analogică a semnalelor &amp; amplificatoare</h1>
   <p class="lead">Conspect: cum se procesează semnalele · cum se amplifică semnalele · alte tipuri de procesări.</p>
 
-  <h2>Analog vs digital signal processing</h2>
+  <h2>Procesarea semnalelor analogice vs digitale</h2>
   <ul>
-    <li><strong>Digital</strong> signals are processed more easily than analog ones, because operations are performed on values discrete, <strong>sampled in time and quantized in amplitude</strong>. Operations like logical addition or multiplexing are implemented more simply on digitized versions. Digital signals do not suffer noise degradation as long as the noise does not exceed certain limits.</li>
-    <li><strong>Analog</strong> signals have continuous amplitude-time values, and processing requires that the signal waveforms not be significantly distorted. Noise cannot be eliminated in analog processing, so its interference must be limited by careful design choices. Analog circuit design is much more critical, and analog circuits cannot always be replaced by digital processing.</li>
+    <li>Semnalele <strong>digitale</strong> se procesează mai ușor decât cele analogice, deoarece operațiile se fac pe valori discrete, <strong>eșantionate în timp și cuantificate în amplitudine</strong>. Operații precum adunarea logică sau multiplexarea se implementează mai simplu pe versiunile digitalizate. Semnalele digitale nu suferă degradare din cauza zgomotului atâta timp cât zgomotul nu depășește anumite limite.</li>
+    <li>Semnalele <strong>analogice</strong> au valori amplitudine-timp continue, iar procesarea lor cere ca formele de undă să nu fie distorsionate semnificativ. Zgomotul nu poate fi eliminat în procesarea analogică, deci interferența lui trebuie limitată prin alegeri atente de proiectare. Proiectarea circuitelor analogice este mult mai critică, iar circuitele analogice nu pot fi întotdeauna înlocuite de procesarea digitală.</li>
   </ul>
 
-  <h2>Electronic circuits used in biomedical signal processing</h2>
+  <h2>Circuite electronice folosite în procesarea semnalelor biomedicale</h2>
   <ul>
-    <li>Summing circuits, differential circuits, signal switching circuits, amplifier circuits, <strong>instrumentation amplifiers</strong>, <strong>isolation amplifiers</strong>, peak detectors, etc.</li>
+    <li>Circuite sumatoare, circuite diferențiale, circuite de comutare a semnalelor, circuite amplificatoare, <strong>amplificatoare de instrumentație</strong>, <strong>amplificatoare de izolație</strong>, detectoare de vârf etc.</li>
   </ul>
 
-  <h2>Operational amplifier — summing amplifier</h2>
+  <h2>Amplificator operațional — amplificator sumator</h2>
   <ul>
-    <li>Compared to the voltage follower, adding several input resistors at the input, each equal to the initial input resistance Rin, gives an <strong>inverting summing amplifier</strong> — a "voltage summer" circuit.</li>
+    <li>Față de repetorul de tensiune, adăugarea mai multor rezistențe de intrare la intrare, fiecare egală cu rezistența de intrare inițială Rin, dă un <strong>amplificator sumator inversor</strong> — un circuit „sumator de tensiune”.</li>
   </ul>
 
-  <h2>Analog signal switching</h2>
+  <h2>Comutarea semnalelor analogice</h2>
   <ul>
-    <li>Most medical instruments include analog sensors for biometric functions (blood pressure, body temperature, heart rate). Analog signal switching is useful when many sources must be dynamically selected or recombined, using analog switches.</li>
-    <li>Ideal switch: output = input always when ON; resistance between input and output should be infinite when OFF.</li>
+    <li>Majoritatea instrumentelor medicale includ senzori analogici pentru funcții biometrice (tensiune arterială, temperatură corporală, frecvență cardiacă). Comutarea semnalelor analogice este utilă când trebuie selectate sau recombinate dinamic multe surse, folosind comutatoare analogice.</li>
+    <li>Comutator ideal: ieșirea = intrarea întotdeauna când este ON; rezistența dintre intrare și ieșire trebuie să fie infinită când este OFF.</li>
   </ul>
 
-  <h2>Differential amplifier</h2>
+  <h2>Amplificator diferențial</h2>
   <ul>
-    <li>A <strong>voltage subtractor</strong> circuit producing an output voltage proportional to the <strong>difference</strong> of two input voltages applied to the inverting and non-inverting terminals of an op-amp.</li>
-    <li>A standard op-amp has two inputs; signals can be connected to both at the same time. Unlike the summing amplifier which adds the input voltages, the differential amplifier <strong>subtracts</strong> them.</li>
+    <li>Un circuit <strong>subtractor de tensiune</strong> care produce la ieșire o tensiune proporțională cu <strong>diferența</strong> a două tensiuni de intrare aplicate pe borna inversoare și pe cea neinversoare ale unui AO.</li>
+    <li>Un AO standard are două intrări; semnalele pot fi conectate la amândouă în același timp. Spre deosebire de amplificatorul sumator care adună tensiunile de intrare, amplificatorul diferențial le <strong>scade</strong>.</li>
   </ul>
 
-  <h2>Instrumentation amplifier</h2>
+  <h2>Amplificator de instrumentație</h2>
   <ul>
-    <li>Differential amplifiers with <strong>very high gain</strong>, <strong>high input impedance</strong> and a <strong>single-ended output</strong>.</li>
-    <li>Used mainly to amplify <strong>very small differential signals</strong> (from voltage stamps) to biosignals.</li>
-    <li>Unlike standard op-amps where closed-loop gain is set by an external resistive feedback, instrumentation amplifiers have an <strong>internal feedback resistor effectively isolated</strong> from their input terminals, because the input signal is applied to two differential inputs V1 and V2.</li>
-    <li>They have a very good <strong>CMRR</strong> (Common-Mode Rejection Ratio) — zero output when V1 = V2.</li>
-    <li><strong>CMRR</strong> quantifies the ability of a device to reject common-mode signals — those appearing <strong>simultaneously and in phase on both inputs</strong>. A high CMRR is needed when a differential signal must be amplified in the presence of strong common-mode input, such as powerful EMI.</li>
-    <li>Structure: two non-inverting amplifiers A1 and A2 form a differential input stage acting as buffers with gain <strong>1 + 2R2/R1</strong> for differential input signals and <strong>unity gain for common-mode</strong> signals. The differential gain can be varied by simply changing R1. With a common-mode voltage, no current flows through R1, so A1 and A2 act as buffers. The output of differential amplifier A3 is the difference of its two inputs <strong>(V2 − V1)</strong>, amplified by A3's gain (unity if R3 = R4). Example chip: <strong>INA121</strong>.</li>
+    <li>Amplificatoare diferențiale cu <strong>câștig foarte mare</strong>, <strong>impedanță de intrare mare</strong> și <strong>ieșire nesimetrică (single-ended)</strong>.</li>
+    <li>Folosite în principal pentru amplificarea <strong>semnalelor diferențiale foarte mici</strong> (de la ștampile de tensiune) până la biosemnale.</li>
+    <li>Spre deosebire de AO standard unde câștigul în buclă închisă este setat de o rețea rezistivă de reacție externă, amplificatoarele de instrumentație au o <strong>rezistență de reacție internă efectiv izolată</strong> de bornele de intrare, deoarece semnalul de intrare se aplică pe două intrări diferențiale V1 și V2.</li>
+    <li>Au un <strong>CMRR</strong> (raport de rejecție în mod comun) foarte bun — ieșire zero când V1 = V2.</li>
+    <li><strong>CMRR</strong> cuantifică abilitatea unui dispozitiv de a rejecta semnalele în mod comun — cele care apar <strong>simultan și în fază pe ambele intrări</strong>. Un CMRR mare este necesar când un semnal diferențial trebuie amplificat în prezența unui semnal în mod comun puternic, cum ar fi EMI puternice.</li>
+    <li>Structură: două amplificatoare neinversoare A1 și A2 formează un etaj de intrare diferențial care acționează ca tampon cu câștigul <strong>1 + 2R2/R1</strong> pentru semnale de intrare diferențiale și <strong>câștig unitar pentru semnalele în mod comun</strong>. Câștigul diferențial poate fi variat schimbând doar R1. Cu o tensiune în mod comun, prin R1 nu circulă curent, deci A1 și A2 acționează ca tampoane. Ieșirea amplificatorului diferențial A3 este diferența celor două intrări ale sale <strong>(V2 − V1)</strong>, amplificată cu câștigul lui A3 (unitar dacă R3 = R4). Exemplu de circuit integrat: <strong>INA121</strong>.</li>
   </ul>
 
-  <h2>Isolation amplifier</h2>
+  <h2>Amplificator de izolație</h2>
   <ul>
-    <li>Instruments applied in the presence of a common-mode voltage <strong>without an isolation barrier</strong> allow ground currents to flow — in the best case a noisy measured signal, in the worst case destruction of the instrument.</li>
-    <li>Isolation amplifiers are used in medical instruments to <strong>isolate the patient from the leakage current of the power supply</strong>.</li>
-    <li>Isolation modalities:
+    <li>Instrumentele aplicate în prezența unei tensiuni în mod comun <strong>fără barieră de izolație</strong> permit circulația curenților de masă — în cel mai bun caz un semnal măsurat zgomotos, în cel mai rău caz distrugerea instrumentului.</li>
+    <li>Amplificatoarele de izolație se folosesc în instrumentele medicale pentru a <strong>izola pacientul de curentul de fugă al sursei de alimentare</strong>.</li>
+    <li>Modalități de izolație:
       <ul>
-        <li><strong>Inductive coupling</strong> — uses transformers.</li>
-        <li><strong>Optic coupling</strong> — optical or infrared domain, with an LED emitter and a photodiode or phototransistor receiver.</li>
-        <li><strong>Capacitive coupling</strong> — preamplified signal transformed into two complementary medium-frequency (MF) signals, transferred through two capacitors acting as an isolation barrier, then demodulated using a PLL loop.</li>
-        <li><strong>Radio telemetry</strong> — WiFi, Bluetooth, etc.</li>
+        <li><strong>Cuplaj inductiv</strong> — folosește transformatoare.</li>
+        <li><strong>Cuplaj optic</strong> — domeniul optic sau infraroșu, cu emițător LED și receptor fotodiodă sau fototranzistor.</li>
+        <li><strong>Cuplaj capacitiv</strong> — semnalul preamplificat transformat în două semnale de frecvență medie (MF) complementare, transferate prin două condensatoare care acționează ca barieră de izolație, apoi demodulate cu o buclă PLL.</li>
+        <li><strong>Telemetrie radio</strong> — WiFi, Bluetooth etc.</li>
       </ul>
     </li>
   </ul>
 
-  <h2>Passive vs active filters</h2>
+  <h2>Filtre pasive vs active</h2>
   <ul>
-    <li><strong>Passive</strong> first-order filtering circuits (low-pass, high-pass) can be built using only a single resistor in series with a non-polarized capacitor.</li>
-    <li>Main disadvantage: output amplitude is <strong>smaller than input</strong> — gain is never greater than unity — and the load impedance affects the filter characteristics. In multi-stage passive filters, this signal loss (<strong>attenuation</strong>) can become very severe.</li>
-    <li><strong>Active filters</strong> contain active components (op-amps) plus resistors and capacitors, draw power from an external supply and use it to <strong>increase/amplify the output signal</strong> — performance similar to a low-frequency filter.</li>
+    <li>Circuitele de filtrare pasive de ordinul întâi (trece-jos, trece-sus) se pot construi folosind doar o singură rezistență în serie cu un condensator nepolarizat.</li>
+    <li>Dezavantaj principal: amplitudinea semnalului de ieșire este <strong>mai mică decât cea de intrare</strong> — câștigul nu este niciodată mai mare decât unitatea — iar impedanța de sarcină afectează caracteristicile filtrului. În filtrele pasive multietaj, această pierdere de semnal (<strong>atenuare</strong>) poate deveni foarte severă.</li>
+    <li><strong>Filtrele active</strong> conțin componente active (AO) plus rezistențe și condensatoare, trag energie de la o sursă externă de alimentare și o folosesc pentru a <strong>mări/amplifica semnalul de ieșire</strong> — performanță similară unui filtru de joasă frecvență.</li>
   </ul>
 
-  <footer class="site"><a href="index.html">← All courses</a> · <a href="exam.html">Mock exam →</a></footer>
+  <footer class="site"><a href="index.html">← Toate cursurile</a> · <a href="exam.html">Examen simulat →</a></footer>
 </div>
 </body>
 </html>

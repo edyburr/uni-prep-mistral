@@ -1,40 +1,40 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ro">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Mock exam — ElMed Prep</title>
+<title>Examen simulat — ElMed Prep</title>
 <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
 <div class="exam-bar" id="examBar" hidden>
-  <span>Mock exam — <span id="qCount"></span> questions</span>
+  <span>Examen simulat — <span id="qCount"></span> întrebări</span>
   <span id="timer">60:00</span>
 </div>
 <div class="wrap">
   <header class="site">
     <a class="brand" href="index.html">ElMed Prep</a>
     <nav>
-      <a href="index.html">Study</a>
-      <a href="exam.html">Mock exam</a>
+      <a href="index.html">Studiu</a>
+      <a href="exam.html">Examen simulat</a>
     </nav>
   </header>
 
   <div id="startView">
-    <h1>Mock exam</h1>
-    <p class="lead">UMFST-style grilă: 24 questions drawn at random from the bank. Each question shows 5 options chosen at random from its 10 (5 correct + 5 wrong), always with <strong>at least one correct answer</strong> — never all five wrong. Select all answers you believe are correct.</p>
-    <p class="lead">Time limit: <strong>60 minutes</strong> (auto-submits at 0:00). Grading out of <strong>10</strong>, pass at <strong>5</strong>. Negative marking: each wrong option you tick subtracts the same amount a correct tick adds; a question can never go below 0.</p>
-    <p><button class="btn" id="startBtn">Start exam</button></p>
+    <h1>Examen simulat</h1>
+    <p class="lead">Grilă în stil UMFST: 24 de întrebări extrase aleator din bancă. Fiecare întrebare afișează 5 variante alese aleator din cele 10 (5 corecte + 5 greșite), întotdeauna cu <strong>cel puțin o variantă corectă</strong> — niciodată toate cele cinci greșite. Bifează toate răspunsurile pe care le consideri corecte.</p>
+    <p class="lead">Limită de timp: <strong>60 de minute</strong> (auto-trimitere la 0:00). Notare din <strong>10</strong>, promovare la <strong>5</strong>. Penalizare negativă: fiecare variantă greșită bifată scade cât adaugă una corectă; o întrebare nu poate coborî sub 0.</p>
+    <p><button class="btn" id="startBtn">Începe examenul</button></p>
   </div>
 
   <div id="examView" hidden>
     <form id="examForm"></form>
-    <p style="margin-top:24px"><button class="btn" id="submitBtn" type="button">Submit</button></p>
+    <p style="margin-top:24px"><button class="btn" id="submitBtn" type="button">Trimite</button></p>
   </div>
 
   <div id="resultView" hidden></div>
 
-  <footer class="site"><a href="index.html">← Back home</a></footer>
+  <footer class="site"><a href="index.html">← Înapoi acasă</a></footer>
 </div>
 <script src="assets/exam.js"></script>
 </body>

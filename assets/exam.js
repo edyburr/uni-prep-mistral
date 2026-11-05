@@ -1,9 +1,9 @@
-/* UMFST-style mock exam engine.
-   Question bank format (data/questions.json): each question has exactly
-   5 correct and 5 wrong answers. For every question, 5 options are drawn
-   at random with the constraint that at least one is correct (all 5
-   correct is allowed, all 5 wrong is not) — mirroring the UNIX platform.
-   Grading: negative marking, per-question floor at 0, total scaled to 10. */
+/* Motor de examen simulat în stil UMFST.
+   Formatul băncii de întrebări (data/questions.json): fiecare întrebare are exact
+   5 răspunsuri corecte și 5 greșite. Pentru fiecare întrebare se aleg 5 variante
+   aleator cu constrângerea ca cel puțin una să fie corectă (toate 5 corecte este
+   permis, toate 5 greșite nu) — la fel ca pe platforma UNIX.
+   Notare: penalizare negativă, scor pe întrebare limitat inferior la 0, total scalat la 10. */
 (function () {
   const startView = document.getElementById('startView');
   const examView = document.getElementById('examView');
@@ -101,11 +101,11 @@
   }
 
   function remark(grade) {
-    if (grade >= 9) return 'Suspiciously good. Did you peek at the grilă?';
-    if (grade >= 7) return 'Solid. The prof would grudgingly nod.';
-    if (grade >= 5) return 'Passed. Barely. The prof smirks.';
-    if (grade >= 3) return 'That is a fail with extra steps.';
-    return 'The grilă has spoken. Read the curs again.';
+    if (grade >= 9) return 'Prea bine ca să fie adevărat. Ai tras cu ochiul la grilă?';
+    if (grade >= 7) return 'Solid. Profu\' ar da din cap, cu reținere.';
+    if (grade >= 5) return 'Ai trecut. La limită. Profu\' zâmbește.';
+    if (grade >= 3) return 'Un eșec cu pași în plus.';
+    return 'Grila a vorbit. Mai citește conspectul.';
   }
 
   function showResult() {
@@ -119,10 +119,10 @@
     res.className = 'result';
     res.innerHTML =
       '<div class="grade ' + (pass ? 'pass' : 'fail') + '">' + total.toFixed(2) + ' / 10</div>' +
-      '<div>' + (pass ? 'PASS' : 'FAIL') + ' (pass mark ' + CONFIG.passMark + ')</div>' +
+      '<div>' + (pass ? 'ADMIS' : 'RESPINS') + ' (prag de promovare ' + CONFIG.passMark + ')</div>' +
       '<div class="remark">' + remark(total) + '</div>' +
-      '<p style="margin-top:20px"><button class="btn" id="againBtn">New random exam</button> ' +
-      '<a class="btn secondary" href="index.html">Study</a></p>';
+      '<p style="margin-top:20px"><button class="btn" id="againBtn">Examen nou aleator</button> ' +
+      '<a class="btn secondary" href="index.html">Studiu</a></p>';
     resultView.appendChild(res);
 
     review.forEach((r, i) => {
@@ -139,8 +139,8 @@
       });
       const v = document.createElement('div');
       v.className = 'verdict ' + (full ? 'ok' : 'no');
-      v.textContent = (full ? 'Correct' : 'Incorrect') + ' — ' + r.pts.toFixed(2) + ' pts' +
-        (r.wrongMarked ? ' (' + r.wrongMarked + ' wrong ticked, −' + (r.wrongMarked * (10 / exam.length / CONFIG.optionsPerQuestion)).toFixed(2) + ')' : '');
+      v.textContent = (full ? 'Corect' : 'Greșit') + ' — ' + r.pts.toFixed(2) + ' pct' +
+        (r.wrongMarked ? ' (' + r.wrongMarked + ' bifate greșit, −' + (r.wrongMarked * (10 / exam.length / CONFIG.optionsPerQuestion)).toFixed(2) + ')' : '');
       box.appendChild(v);
     });
     resultView.appendChild(examForm);

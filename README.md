@@ -1,23 +1,23 @@
 # uni-prep-mistral
 
-Static study + mock-exam site for **Electronică Medicală (UMFST)**, served via GitHub Pages. No framework, no build step.
+Site static de studiu + examen simulat pentru **Electronică Medicală (UMFST)**, servit prin GitHub Pages. Fără framework, fără pas de build.
 
-- `index.html` — home: course list + mock exam entry
-- `curs-1.html` … `curs-5.html` — study notes per course (chapters preserved from the lecture slides)
-- `exam.html` + `assets/exam.js` — mock exam engine
-- `data/questions.json` — question bank
+- `index.html` — pagina principală: lista de cursuri + intrarea în examenul simulat
+- `curs-1.html` … `curs-5.html` — conspecte de studiu per curs (capitolele păstrate din slide-urile de la curs)
+- `exam.html` + `assets/exam.js` — motorul examenului simulat
+- `data/questions.json` — banca de întrebări
 
-## Mock exam format (UMFST / UNIX grilă)
+## Formatul examenului simulat (grilă UMFST / UNIX)
 
-- 24 questions drawn at random per exam, 60-minute timer with auto-submit.
-- Each question in `data/questions.json` has exactly **5 correct and 5 wrong answers**. The engine picks **5 options at random** per question, enforcing **at least one correct option** (all five correct is allowed, all five wrong is impossible) — same rule as the UNIX exam platform.
-- **Negative marking**: each question is worth `10/24` points; every displayed option is worth `1/5` of that. Ticking a correct option adds, ticking a wrong option subtracts (`penaltyFactor` in the config), per-question score floored at 0. Total graded out of 10, pass mark 5.
+- 24 de întrebări extrase aleator per examen, cronometru de 60 de minute cu auto-trimitere.
+- Fiecare întrebare din `data/questions.json` are exact **5 răspunsuri corecte și 5 greșite**. Motorul alege **5 variante aleator** per întrebare, impunând **cel puțin o variantă corectă** (toate cele 5 corecte este permis, toate cele 5 greșite este imposibil) — aceeași regulă ca pe platforma de examen UNIX.
+- **Penalizare negativă**: fiecare întrebare valorează `10/24` puncte; fiecare variantă afișată valorează `1/5` din asta. Bifarea unei variante corecte adaugă, bifarea uneia greșite scade (`penaltyFactor` din config), scorul pe întrebare fiind limitat inferior la 0. Totalul se notează din 10, prag de promovare 5.
 
-## Editing
+## Editare
 
-- Add questions: append to `data/questions.json` — keep exactly 5 entries in `correct` and 5 in `wrong`.
-- Tuning: edit the `config` block at the top of `data/questions.json` (number of questions, options per question, time limit, penalty factor).
+- Adăugare întrebări: se adaugă în `data/questions.json` — păstrați exact câte 5 intrări în `correct` și 5 în `wrong`.
+- Reglaj: editați blocul `config` de la începutul lui `data/questions.json` (număr de întrebări, variante per întrebare, limită de timp, factor de penalizare).
 
-## Local run
+## Rulare locală
 
-Any static server works, e.g. `python3 -m http.server` in this directory.
+Orice server static funcționează, ex. `python3 -m http.server` în acest director.

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ro">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -11,48 +11,48 @@
   <header class="site">
     <a class="brand" href="index.html">ElMed Prep</a>
     <nav>
-      <a href="index.html">Study</a>
-      <a href="exam.html">Mock exam</a>
+      <a href="index.html">Studiu</a>
+      <a href="exam.html">Examen simulat</a>
     </nav>
   </header>
 
-  <h1>Curs 03 — Active filters: LP, HP, BP</h1>
+  <h1>Curs 03 — Filtre active: TJ, TS, TB</h1>
   <p class="lead">Conspect: filtru activ trece jos · filtru activ trece sus · filtru activ trece bandă · frecvența de rezonanță · factorul Q.</p>
 
-  <h2>Filters — generalities</h2>
+  <h2>Filtre — generalități</h2>
   <ul>
-    <li>Filters are networks that process signals in a <strong>frequency-dependent manner</strong>. The basic concept can be explained by the frequency-dependent nature of the impedance of capacitors and inductors.</li>
-    <li>Filters separate signals, passing those of interest and attenuating unwanted frequencies (e.g. a radio receiver passes the desired signal with gain while attenuating the rest).</li>
-    <li>In low-frequency applications (<strong>up to 100 kHz</strong>), passive filters are generally built with simple <strong>RC</strong> networks; at higher frequencies (<strong>above 100 kHz</strong>) they are usually made of <strong>RLC</strong> components.</li>
-    <li>Two distinct types: <strong>active and passive</strong> filters. Active filters contain amplifying devices to increase signal power. In a passive filter, the output amplitude is smaller than the input — passive RC filters attenuate the signal and have a gain smaller than one.</li>
+    <li>Filtrele sunt rețele care procesează semnalele într-un mod <strong>dependent de frecvență</strong>. Conceptul de bază poate fi explicat prin natura dependentă de frecvență a impedanței condensatoarelor și bobinelor.</li>
+    <li>Filtrele separă semnalele, lăsând să treacă pe cele de interes și atenuând frecvențele nedorite (ex. un receptor radio lasă să treacă semnalul dorit cu câștig, atenuând restul).</li>
+    <li>În aplicații de joasă frecvență (<strong>până la 100 kHz</strong>), filtrele pasive se construiesc în general cu rețele simple <strong>RC</strong>; la frecvențe mai mari (<strong>peste 100 kHz</strong>) sunt de obicei realizate din componente <strong>RLC</strong>.</li>
+    <li>Două tipuri distincte: filtre <strong>active și pasive</strong>. Filtrele active conțin dispozitive amplificatoare pentru a mări puterea semnalului. Într-un filtru pasiv, amplitudinea de ieșire este mai mică decât cea de intrare — filtrele pasive RC atenuează semnalul și au câștig mai mic decât unu.</li>
   </ul>
 
-  <h2>Active low-pass filter</h2>
+  <h2>Filtru activ trece-jos</h2>
   <ul>
-    <li>The capacitor is moved from the op-amp input to the <strong>feedback circuit, in parallel with R2</strong>. The parallel C || R2 combination sets the <strong>-3 dB point</strong> as before, but allows the amplifier gain to decrease beyond the cutoff frequency.</li>
-    <li>At low frequencies, the capacitor reactance is much larger than R2, so the <strong>DC gain is set by the standard inverting formula −R2/R1</strong> (e.g. = 10).</li>
-    <li>As frequency rises, capacitor reactance drops, reducing the impedance of the Xc || R2 combination, until Xc goes to zero. At a sufficiently high frequency the <strong>gain reaches unity (0 dB)</strong> — the amplifier effectively becomes a <strong>follower</strong>: gain equation becomes <strong>1 + 0/R1 = 1</strong>.</li>
-    <li><strong>Second-order</strong> active low-pass: add an extra RC network at the input. The frequency response is identical to first-order except the <strong>stopband slope is twice</strong> that of first-order filters. Design steps are the same.</li>
+    <li>Condensatorul este mutat de la intrarea AO în <strong>circuitul de reacție, în paralel cu R2</strong>. Combinația paralel C || R2 stabilește <strong>punctul de -3 dB</strong> ca înainte, dar permite câștigului amplificatorului să scadă dincolo de frecvența de tăiere.</li>
+    <li>La frecvențe joase, reactanța condensatorului este mult mai mare decât R2, deci <strong>câștigul în curent continuu este dat de formula standard inversă −R2/R1</strong> (ex. = 10).</li>
+    <li>Pe măsură ce frecvența crește, reactanța condensatorului scade, reducând impedanța combinației Xc || R2, până când Xc ajunge la zero. La o frecvență suficient de mare <strong>câștigul ajunge la unitate (0 dB)</strong> — amplificatorul devine efectiv un <strong>repetor</strong>: ecuația de câștig devine <strong>1 + 0/R1 = 1</strong>.</li>
+    <li><strong>Trece-jos activ de ordinul doi</strong>: se adaugă o rețea RC suplimentară la intrare. Răspunsul în frecvență este identic cu cel de ordinul întâi, doar că <strong>panta benzii de oprire este dublă</strong> față de filtrele de ordinul întâi. Pașii de proiectare sunt aceiași.</li>
   </ul>
 
-  <h2>Active high-pass filter</h2>
+  <h2>Filtru activ trece-sus</h2>
   <ul>
-    <li><strong>Technically, there is no real active high-pass filter</strong> — unlike passive high-pass filters which have an "infinite" maximum passband response, the maximum passband frequency response of an active high-pass is <strong>limited by the characteristics of the op-amp</strong> used.</li>
-    <li>A first-order active high-pass <strong>attenuates low frequencies and passes high-frequency signals</strong>. It consists purely of a <strong>passive filter section followed by a non-inverting op-amp</strong>. The frequency response is the same as the passive filter, except the amplitude is increased by the amplifier gain.</li>
-    <li><strong>Higher-order</strong> active filters (3rd, 4th, 5th…) are formed by <strong>cascading first and second order filters</strong>: a 3rd-order high-pass is a cascade of a 1st and a 2nd order; a 4th-order is two 2nd-order stages. An <strong>odd order starts with a first-order</strong> filter at the input; an even order consists only of second-order filters.</li>
-    <li>There is no limit to the order, but as order grows, so does size — and <strong>precision decreases</strong>: the difference between the real and theoretical stopband response also grows.</li>
-    <li>If all frequency-determining resistors are equal (R1 = R2 = R3…) and all capacitors equal (C1 = C2 = C3…), the <strong>cutoff frequency for any filter order will be exactly the same</strong>.</li>
+    <li><strong>Tehnic, nu există un filtru trece-sus activ „real”</strong> — spre deosebire de filtrele pasive trece-sus care au un răspuns maxim în banda de trecere „infinit”, răspunsul maxim în frecvență al unui trece-sus activ este <strong>limitat de caracteristicile AO folosit</strong>.</li>
+    <li>Un trece-sus activ de ordinul întâi <strong>atenuează frecvențele joase și lasă să treacă semnalele de frecvență mare</strong>. Constă pur și simplu dintr-o <strong>secțiune de filtru pasiv urmată de un AO neinversor</strong>. Răspunsul în frecvență este același cu cel al filtrului pasiv, doar că amplitudinea este mărită de câștigul amplificatorului.</li>
+    <li>Filtrele active de <strong>ordin superior</strong> (3, 4, 5… ) se formează prin <strong>cascadarea filtrelor de ordinul întâi și doi</strong>: un trece-sus de ordin 3 este o cascadă între unul de ordin 1 și unul de ordin 2; unul de ordin 4 este format din două etaje de ordin 2. Un <strong>ordin impar începe cu un filtru de ordinul întâi</strong> la intrare; un ordin par constă doar din filtre de ordinul doi.</li>
+    <li>Nu există limită a ordinului, dar pe măsură ce ordinul crește, crește și dimensiunea — iar <strong>precizia scade</strong>: diferența dintre răspunsul real și cel teoretic în banda de oprire crește și ea.</li>
+    <li>Dacă toate rezistențele determinante de frecvență sunt egale (R1 = R2 = R3…) și toți condensatorii egali (C1 = C2 = C3…), <strong>frecvența de tăiere pentru orice ordin de filtru va fi exact aceeași</strong>.</li>
   </ul>
 
-  <h2>Active band-pass filter</h2>
+  <h2>Filtru activ trece-bandă</h2>
   <ul>
-    <li>The cutoff frequency of the <strong>low-pass part must be greater than</strong> the cutoff of the high-pass part. The difference between the two −3 dB frequencies determines the <strong>bandwidth</strong> of the band-pass filter, while attenuating any signal outside these points.</li>
-    <li>Example: −3 dB points at <strong>200 Hz and 600 Hz</strong> → <strong>BW = 600 − 200 = 400 Hz</strong>.</li>
-    <li>Simple implementation: cascade <strong>passive high-pass + passive low-pass</strong> stages into an amplifying circuit — produces a low-Q (wide passband) response. The <strong>first stage is the high-pass</strong>, which uses the capacitor to <strong>block any DC bias</strong> from the source. A reasonable separation between the two cutoff points is required to prevent interaction between stages; the amplifier also isolates the two stages and defines the overall voltage gain.</li>
-    <li>Improved design: <strong>IGMF</strong> (infinite gain multiple feedback) band-pass — based on an active filter with negative feedback, giving a <strong>high Q factor (up to 25)</strong> and an abrupt decline on each side of its center frequency. Center frequency and bandwidth are linked to R1, R2, C1, C2; output taken from the op-amp output.</li>
+    <li>Frecvența de tăiere a <strong>părții trece-jos trebuie să fie mai mare</strong> decât tăierea părții trece-sus. Diferența dintre cele două frecvențe de -3 dB determină <strong>lărgimea de bandă</strong> a filtrului trece-bandă, atenuând orice semnal din afara acestor puncte.</li>
+    <li>Exemplu: puncte de -3 dB la <strong>200 Hz și 600 Hz</strong> → <strong>LB = 600 − 200 = 400 Hz</strong>.</li>
+    <li>Implementare simplă: se cascadează etaje <strong>trece-sus pasiv + trece-jos pasiv</strong> într-un circuit amplificator — produce un răspuns cu Q mic (bandă de trecere largă). <strong>Primul etaj este trece-sus</strong>, care folosește condensatorul pentru a <strong>bloca orice polarizare în CC</strong> de la sursă. Este necesară o separare rezonabilă între cele două puncte de tăiere pentru a preveni interacțiunea între etaje; amplificatorul izolează cele două etaje și definește câștigul total de tensiune.</li>
+    <li>Proiectare îmbunătățită: trece-bandă <strong>IGMF</strong> (multiple feedback cu câștig infinit) — bazat pe un filtru activ cu reacție negativă, oferind un <strong>factor Q mare (până la 25)</strong> și un declin abrupt de fiecare parte a frecvenței sale centrale. Frecvența centrală și lărgimea de bandă sunt legate de R1, R2, C1, C2; ieșirea se ia de la ieșirea AO.</li>
   </ul>
 
-  <footer class="site"><a href="index.html">← All courses</a> · <a href="exam.html">Mock exam →</a></footer>
+  <footer class="site"><a href="index.html">← Toate cursurile</a> · <a href="exam.html">Examen simulat →</a></footer>
 </div>
 </body>
 </html>
