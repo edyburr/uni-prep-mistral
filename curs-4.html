@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Curs 04 — ElMed Prep</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<div class="wrap content">
+  <header class="site">
+    <a class="brand" href="index.html">ElMed Prep</a>
+    <nav>
+      <a href="index.html">Study</a>
+      <a href="exam.html">Mock exam</a>
+    </nav>
+  </header>
+
+  <h1>Curs 04 — Band-stop, notch &amp; filter topologies</h1>
+  <p class="lead">Conspect: filtrul oprește bandă · filtrul notch · alte tipologii de filtre.</p>
+
+  <h2>Active band-stop filter</h2>
+  <ul>
+    <li>All input frequencies <strong>below 200 Hz</strong> are transmitted unattenuated by the low-pass filter; all frequencies <strong>above 800 Hz</strong> are transmitted unattenuated by the high-pass filter. Frequencies <strong>between 200 Hz and 800 Hz</strong> are rejected by each filter, forming a notch in the output response.</li>
+    <li>Implementation: a single low-pass and a single high-pass filter, <strong>isolated from each other by a voltage follower (Av = 1)</strong>, then re-summed using a <strong>third op-amp connected as a summer</strong>.</li>
+    <li>If the feedback resistor and the two input resistors of the summer all have the same value (e.g. <strong>10 kΩ</strong>), the inverting summer provides an algebraically correct sum of the two input signals with <strong>zero voltage gain</strong>.</li>
+  </ul>
+
+  <h2>Notch filter</h2>
+  <ul>
+    <li>Simple band-stop filters reject a <strong>wide band</strong>; a <strong>notch filter</strong> is a very selective, <strong>high-Q</strong> design used to reject a <strong>single or very narrow band</strong> of frequencies — e.g. mains noise induced in a circuit with inductive loads (motors, ballast lighting), or harmonics.</li>
+    <li>The most common notch design is the <strong>twin-T network</strong>: two RC branches in a T shape, using <strong>three resistors and three capacitors</strong>, with R and C elements opposite in the T part of the design, creating a deeper notch.</li>
+    <li>Active notch: the <strong>Q value is determined by the ratio of R3 and R4</strong>; to make Q fully adjustable, replace them with a potentiometer; to obtain the maximum notch depth at a given frequency, R3 and R4 can be eliminated and the R–2C junction connected directly to the output.</li>
+  </ul>
+
+  <h2>Filter order, decades and octaves</h2>
+  <ul>
+    <li>The <strong>order</strong> of a filter depends on the number of <strong>reactive components</strong> (capacitors or inductors) in its design. The width of the <strong>transition band</strong> depends on the filter order: for a simple <strong>first-order filter it is 20 dB/decade or 6 dB/octave</strong>.</li>
+    <li>Higher-order filters (3rd, 4th, 5th…) are usually formed by <strong>cascading</strong> single first and second order filters.</li>
+    <li>A <strong>decade</strong> is a tenfold change on the frequency scale (×10 or ÷10): 2→20 Hz is one decade; 50→5000 Hz is <strong>two decades</strong>.</li>
+    <li>An <strong>octave</strong> is a doubling or halving (×2 or ÷2): 10→20 Hz is one octave; 2→16 Hz is <strong>three octaves</strong>.</li>
+    <li>Logarithmic scales are widely used in the frequency domain for amplifiers and filters.</li>
+  </ul>
+
+  <h2>Filter approximation topologies</h2>
+  <ul>
+    <li>An ideal filter would offer maximum gain and flatness in the passband, minimum attenuation in the stopband, and a very abrupt transition band. Mathematical "approximation functions" are used in analog filter design: <strong>Elliptical (Cauer), Butterworth, Chebyshev, Bessel</strong>, and others.</li>
+    <li><strong>Bessel</strong> (Friedrich Bessel): the softest response of all; even without a sharp cutoff, it offers <strong>superior phase delay</strong>. Needs the most stages (more components), with excellent characteristics and <strong>low sensitivity to component tolerance</strong>. Ideal for applications needing minimal phase change; usable only where there is adequate space between passband and stopband.</li>
+    <li><strong>Butterworth</strong> (Stephen Butterworth): <strong>maximally flat passband</strong>; better selectivity than many other topologies, at the cost of <strong>greater phase delay and weaker phase linearity</strong>. Not very sensitive to tolerances of discrete components. <strong>Most often used</strong> filter.</li>
+    <li><strong>Chebyshev</strong> (Pafnuty Chebyshev): known for its <strong>rippled response</strong> — in the passband (Type 1) or in the stopband (Type 2). Ripple amplitude is directly proportional to the cutoff slope: steeper cutoff = larger ripple. Performance between Elliptic and Butterworth; easy to realize with few components and very good selectivity with one of the steepest cutoffs.</li>
+    <li><strong>Elliptic / Cauer</strong> (Wilhelm Cauer): ripple in <strong>both</strong> passband and stopband (passband ripple similar to Chebyshev) with much <strong>better selectivity</strong>; disadvantage is a more complex filtering network needing more components. Best used where selectivity is a key design factor; ripple in both bands can be adjusted separately.</li>
+    <li><strong>Best filter?</strong> Depends on many weighed elements: frequency response, selectivity, complexity (number of stages), phase delay. Most often: <strong>Butterworth</strong>.</li>
+  </ul>
+
+  <footer class="site"><a href="index.html">← All courses</a> · <a href="exam.html">Mock exam →</a></footer>
+</div>
+</body>
+</html>
